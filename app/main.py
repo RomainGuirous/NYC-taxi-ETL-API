@@ -1,8 +1,15 @@
 from fastapi import FastAPI
 from app.api.kpi import router as kpi_router
+from fastapi.responses import FileResponse
 
 #creation instance app
 app = FastAPI()
+
+#favicon
+#inutile, sert juste pour éviter une page 404
+@app.get("/favicon.ico")
+async def favicon():
+    return FileResponse(r"./img/taxi.ico")
 
 # Importation du routeur KPI
 # kpi_router est l'objet router défini dans kpi.py
